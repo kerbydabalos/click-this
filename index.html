@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crush Mo Ba Ako?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 30px;
+      background: #fff0f5;
+      overflow: hidden;
+    }
+
+    img {
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      color: #e91e63;
+      margin-bottom: 40px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      margin: 10px;
+      cursor: pointer;
+      position: absolute;
+      transition: 0.2s ease;
+    }
+
+    #yesBtn {
+      background-color: #4CAF50;
+      color: white;
+      position: static;
+    }
+
+    #noBtn {
+      background-color: #f44336;
+      color: white;
+    }
+
+    #maybeBtn {
+      background-color: #ff9800;
+      color: white;
+    }
+
+    #videoContainer {
+      margin-top: 30px;
+      display: none;
+    }
+
+    #message {
+      font-size: 28px;
+      font-weight: bold;
+      color: #e91e63;
+      margin-top: 40px;
+      display: none;
+    }
+
+    .container {
+      position: relative;
+      height: 400px;
+    }
+
+    #mainContent {
+      transition: all 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🖼️ Image above -->
+  <img src="https://raw.githubusercontent.com/kerbydabalos/audio-files/refs/heads/main/received_1403105337393225.jpeg" alt="Cute image">
+
+  <!-- Question and Buttons -->
+  <div id="mainContent">
+    <h1 id="question">Crush mo ba ako?</h1>
+
+    <div class="container">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+      <button id="maybeBtn">Maybe</button>
+    </div>
+  </div>
+
+  <!-- Message & Video -->
+  <div id="message">Alam ko naman 😏💖</div>
+
+  <div id="videoContainer">
+    <video width="320" height="240" controls autoplay>
+      <source src="https://www.dropbox.com/scl/fi/umqdnqjcbffg72vo2ea0y/ada06af0f9348decff1a3fa44128edc3.mp4?rlkey=0tfqczma2znphd7sis0qskgjt&st=4w2c37m0&raw=1" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const maybeBtn = document.getElementById("maybeBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("message");
+    const videoContainer = document.getElementById("videoContainer");
+    const mainContent = document.getElementById("mainContent");
+
+    function move(btn) {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      btn.style.left = `${x}px`;
+      btn.style.top = `${y}px`;
+    }
+
+    // Keep moving on hover and click
+    noBtn.addEventListener("mouseover", () => move(noBtn));
+    noBtn.addEventListener("click", () => move(noBtn));
+
+    maybeBtn.addEventListener("mouseover", () => move(maybeBtn));
+    maybeBtn.addEventListener("click", () => move(maybeBtn));
+
+    // On Yes: hide question/buttons and show message + video
+    yesBtn.addEventListener("click", () => {
+      mainContent.style.display = "none";
+      message.style.display = "block";
+      videoContainer.style.display = "block";
+    });
+
+    // Initial positions
+    move(noBtn);
+    move(maybeBtn);
+  </script>
+
+</body>
+</html>
